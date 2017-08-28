@@ -1,0 +1,1 @@
+{"version":3,"file":"person.component.js","sourceRoot":"","sources":["person.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,sCAAiD;AACjD,mCAAkC;AAUlC,IAAa,eAAe;IAA5B;IAEA,CAAC;IAAD,sBAAC;AAAD,CAAC,AAFD,IAEC;AADS;IAAR,YAAK,EAAE;8BAAS,eAAM;+CAAC;AADZ,eAAe;IAR3B,gBAAS,CAAC;QACT,QAAQ,EAAE,QAAQ;QACnB,QAAQ,EAAE,qHAIR;KACF,CAAC;GACW,eAAe,CAE3B;AAFY,0CAAe"}
