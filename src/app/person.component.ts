@@ -9,12 +9,8 @@ const YEARS: number[] = [
 
 @Component({
   selector: 'person',
-	template: `
-    <div *ngIf="person">
-			<span class="badge">{{person.familly}}</span> {{person.name}}
-      <span *ngFor="let y of years">{{y}}</span>
-    </div>
-  `
+  styleUrls: ['./person.component.css'],
+	templateUrl: './person.component.html'
 })
 export class PersonComponent {
 	@Input() person: Person;

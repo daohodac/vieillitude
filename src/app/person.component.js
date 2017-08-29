@@ -26,7 +26,8 @@ __decorate([
 PersonComponent = __decorate([
     core_1.Component({
         selector: 'person',
-        template: "\n    <div *ngIf=\"person\">\n\t\t\t<span class=\"badge\">{{person.familly}}</span> {{person.name}}\n      <span *ngFor=\"let y of years\">{{y}}</span>\n    </div>\n  "
+        styleUrls: ['./person.component.css'],
+        templateUrl: './person.component.html'
     })
 ], PersonComponent);
 exports.PersonComponent = PersonComponent;

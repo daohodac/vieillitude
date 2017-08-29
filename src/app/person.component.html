@@ -1,0 +1,5 @@
+
+	<div *ngIf="person" class='person'>
+		<span class="badge">{{person.familly}}</span> {{person.name}}
+		<span class="year" *ngFor="let y of years">{{y}}</span>
+	</div>
