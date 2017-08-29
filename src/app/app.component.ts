@@ -1,24 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Person } from './person';
+import { PersonService } from './person.service';
 
 
-const PERSONS: Person[] = [
-  {familly: "Hodac",    name: 'Anne-Laure'},
-  {familly: "Hodac",    name: 'Dao'},
-  {familly: "Hodac",    name: 'Fanny'},
-  {familly: "Hodac",    name: 'Paula'},
-  {familly: "Hodac",    name: 'Lucie'},
-  {familly: "Brehault", name: 'Barbichu'},
-  {familly: "Brehault", name: 'Caro'},
-  {familly: "Brehault", name: 'Gabriel'},
-  {familly: "Brehault", name: 'Victor'},
-  {familly: "Brehault", name: 'Capucine'},
-  {familly: "Lebreton", name: 'Etienne'},
-  {familly: "Lebreton", name: 'Sophie'},
-  {familly: "Lebreton", name: 'Pierre'},
-  {familly: "Lebreton", name: 'Guillaume'},
-  {familly: "Lebreton", name: 'Antoine' },
-];
 
 @Component({
   selector: 'my-app',
@@ -78,11 +62,23 @@ const PERSONS: Person[] = [
   </li>
 </ul>
 `,
+providers: [PersonService]
 })
-export class AppComponent  {
+export class AppComponent  implements OnInit {
+
+  constructor(private personService: PersonService) { }
+
   title = 'La vieillitude';
-  persons = PERSONS;
+  persons: Person[];
   selectedPerson: Person;
+
+  getPersons(): void {
+    this.persons = this.personService.getPersons();
+  }
+
+  ngOnInit(): void {
+    this.getPersons();
+  }
 
   onSelect(p: Person): void {
     console.log("selected "+p.name);
