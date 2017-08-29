@@ -10,8 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var person_1 = require("./person");
+var YEARS = [
+    2002, 2003, 2004, 2005, 2006, 2007
+];
 var PersonComponent = (function () {
     function PersonComponent() {
+        this.years = YEARS;
     }
     return PersonComponent;
 }());
@@ -22,7 +26,7 @@ __decorate([
 PersonComponent = __decorate([
     core_1.Component({
         selector: 'person',
-        template: "\n    <div *ngIf=\"person\">\n\t\t\t<span class=\"badge\">{{person.familly}}</span> {{person.name}}\n    </div>\n  "
+        template: "\n    <div *ngIf=\"person\">\n\t\t\t<span class=\"badge\">{{person.familly}}</span> {{person.name}}\n      <span *ngFor=\"let y of years\">{{y}}</span>\n    </div>\n  "
     })
 ], PersonComponent);
 exports.PersonComponent = PersonComponent;
