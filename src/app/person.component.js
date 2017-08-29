@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var person_1 = require("./person");
 var YEARS = [
-    2002, 2003, 2004, 2005, 2006, 2007
+    2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
 ];
 var PersonComponent = (function () {
     function PersonComponent() {
