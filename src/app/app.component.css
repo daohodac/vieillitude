@@ -3,12 +3,11 @@
 	list-style-type: none;
 }
 
-
 .persons li {
 	display: flex; /* or inline-flex */
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: flex-start;
-	height: 100px;
+	height: 200px;
 	margin-top: 10px;
 }
