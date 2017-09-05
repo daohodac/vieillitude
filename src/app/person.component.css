@@ -8,9 +8,13 @@
 .person .badge{
 	width: 175px;
 }
-.person .year{
+.person .snapshot{
 	width: 200px;
 	background-color: lightgray;
 	margin: 5px;
 	height: 200px;
+  text-align:center;
+}
+.person .snapshot .year{
+  padding-top: -50px;
 }
