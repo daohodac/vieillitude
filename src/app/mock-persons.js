@@ -15,5 +15,15 @@ exports.PERSONS = [
     { familly: "Lebreton", name: 'Pierre' },
     { familly: "Lebreton", name: 'Guillaume' },
     { familly: "Lebreton", name: 'Antoine' },
+    { familly: "Andrieu", name: 'Agnes' },
+    { familly: "Andrieu", name: 'Matthieu' },
+    { familly: "Andrieu", name: 'Matisse' },
+    { familly: "Andrieu", name: 'Simon' },
+    { familly: "Andrieu", name: 'Elsa' },
+    { familly: "Andrieu", name: 'Greg' },
+    { familly: "Andrieu", name: 'Sophie' },
+    { familly: "Andrieu", name: 'Zoe' },
+    { familly: "Andrieu", name: 'Gabriel' },
+    { familly: "Andrieu", name: 'Alice' },
 ];
 //# sourceMappingURL=mock-persons.js.map
