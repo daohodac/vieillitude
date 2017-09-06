@@ -3,17 +3,25 @@
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: flex-start;
+  text-align:center;
 }
 
 .person .badge{
-	width: 175px;
+  width: 0px;
+  height: 0px;
+  -webkit-transform:rotate(90deg);
+  -moz-transform:rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform:rotate(90deg);
+  transform: rotate(90deg);
+  white-space:nowrap;
 }
+
 .person .snapshot{
 	width: 200px;
 	background-color: lightgray;
 	margin: 5px;
 	height: 200px;
-  text-align:center;
 }
 .person .snapshot .year{
   padding-top: -50px;
