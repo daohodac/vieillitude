@@ -1,5 +1,4 @@
-
 export class Person {
-  name: string;
-  familly: string;
+	name: string;
+	familly: string;
 }

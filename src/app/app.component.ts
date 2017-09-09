@@ -1,17 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Person } from './person';
 import { PersonService } from './person.service';
 
 
-
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ],
+  styleUrls: ['./app.component.css'],
   providers: [PersonService]
 })
-export class AppComponent  implements OnInit {
-
+export class AppComponent {
   constructor(private personService: PersonService) { }
 
   title = 'La vieillitude';
@@ -24,10 +22,5 @@ export class AppComponent  implements OnInit {
 
   ngOnInit(): void {
     this.getPersons();
-  }
-
-  onSelect(p: Person): void {
-    console.log("selected "+p.name);
-    this.selectedPerson = p;
   }
 }

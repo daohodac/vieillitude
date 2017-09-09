@@ -1,6 +1,6 @@
 <h1>{{title}}</h1>
 <ul class="persons">
-<li *ngFor="let p of persons"  (click)="onSelect(p)">
+<li *ngFor="let p of persons">
 	<person [person]="p"></person>
 </li>
 </ul>

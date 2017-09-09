@@ -7,6 +7,9 @@ import { PERSONS } from './mock-persons';
 
 @Injectable()
 export class PersonService {
+
+  constructor() { }
+
 	getPersons(): Person[] {
 		return PERSONS;
 	}
