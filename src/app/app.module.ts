@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { PersonComponent } from './person/person.component';
+import { FilterPersonPipe } from './filter-person.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PersonComponent
+    PersonComponent,
+    FilterPersonPipe
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,7 @@ export class AppComponent {
 
   title = 'La vieillitude';
   persons: Person[];
-  selectedPerson: Person;
+  filter: String;
 
   getPersons(): void {
     this.persons = this.personService.getPersons();
