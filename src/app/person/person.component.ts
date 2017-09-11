@@ -2,8 +2,20 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Person } from '../person';
 
 
-const YEARS: number[] = [
-  2004,2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+const YEARS: any[] = [ {year: "2004", klass: "grey0"},
+  {year: "2005", klass: "grey0"},
+  {year: "2006", klass: "grey0"},
+  {year: "2007", klass: "grey0"},
+  {year: "2008", klass: "grey0"},
+  {year: "2009", klass: "grey0"},
+  {year: "2010", klass: "grey0"},
+  {year: "2011", klass: "grey0"},
+  {year: "2012", klass: "grey0"},
+  {year: "2013", klass: "grey0"},
+  {year: "2014", klass: "grey0"},
+  {year: "2015", klass: "grey50"},
+  {year: "2016", klass: "grey0"},
+  {year: "2017", klass: "grey0"}
 ].reverse();
 
 @Component({

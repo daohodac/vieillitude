@@ -2,7 +2,9 @@
 	<div *ngIf="person" class='person'>
 		<div class="badge">{{person.name}}</div>
 		<div class="snapshot" *ngFor="let y of years">
-			<img src="http://res.cloudinary.com/daohodac/image/upload/w_201,h_201,c_thumb,g_face/vieillitude/{{person.name | lowercase}}-{{person.familly | lowercase}}-{{y}}.jpg" alt="">
-			<span class='year'>{{y}}</span>
+			<img
+				class="{{y.klass}}"
+				src="http://res.cloudinary.com/daohodac/image/upload/w_201,h_201,c_thumb,g_face/vieillitude/{{person.name | lowercase}}-{{person.familly | lowercase}}-{{y.year}}.jpg"
+				alt="{{y.year}}">
 		</div>
 	</div>
