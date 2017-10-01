@@ -1,14 +1,14 @@
-import { ACliPage } from './app.po';
+import { AppPage } from './app.po';
 
-describe('vieillitude App', function() {
-  let page: ACliPage;
+describe('vieillitude App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new ACliPage();
+    page = new AppPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });

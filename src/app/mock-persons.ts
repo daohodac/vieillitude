@@ -38,6 +38,7 @@ export const PERSONS: Person[] = shuffle([
   {familly: "Brehault", name: 'Gabriel'},
   {familly: "Brehault", name: 'Victor'},
   {familly: "Brehault", name: 'Capucine'},
+  {familly: "Brehault", name: 'Barbichu'},
   {familly: "Lebreton", name: 'Etienne'},
   {familly: "Lebreton", name: 'Sophie'},
   {familly: "Lebreton", name: 'Pierre'},
