@@ -1,0 +1,240 @@
+# Implementation Complete — Stage Checklist
+
+## ✅ Stage 1: Build Script
+- [x] Node.js build script (`build/scripts/build.js`)
+- [x] Walks `photos/<slug>/<year>.*` for source images
+- [x] Generates thumbnail WebPs (300px, 80% quality)
+- [x] Generates full-size WebPs (800px, 90% quality)
+- [x] Outputs to `build/dist/` and copies to `site/photos/`
+- [x] Emits `manifest.json` (never hand-edited)
+- [x] Test image generator (`build/scripts/setup-test-photos.js`)
+- [x] Sample friends: alice, bob, charlie with staggered years
+- [x] Missing years handled gracefully
+
+**Commands:**
+```bash
+npm run setup   # Generate test photos
+npm run build   # Full build
+```
+
+---
+
+## ✅ Stage 2: Matrix View
+- [x] Scrollable friend × year grid (`site/index.html`)
+- [x] CSS Grid with sticky header (years) and sticky column (friend names)
+- [x] Real-time text filter by name (client-side)
+- [x] Missing years render as `—` placeholder (no broken images)
+- [x] Timelapse button per friend
+- [x] Responsive design for mobile
+- [x] Styling (`site/css/matrix.css`)
+- [x] Logic (`site/js/matrix.js`)
+
+**Features tested:**
+- ✓ Grid renders correctly
+- ✓ Filter works (case-insensitive)
+- ✓ Navigation to timelapse view
+
+---
+
+## ✅ Stage 3: Timelapse View
+- [x] Per-friend fullscreen view (`site/timelapse.html`)
+- [x] Slider to navigate through available years
+- [x] Gracefully skips missing years (no blank frames)
+- [x] Play/Pause button — auto-cycles at 1s per frame, loops
+- [x] Keyboard controls (← → arrow keys, Space to play)
+- [x] Year label display
+- [x] Fetches full-size WebPs (not thumbnails)
+- [x] Back button to matrix (session preserved)
+- [x] Styling (`site/css/timelapse.css`)
+- [x] Logic (`site/js/timelapse.js`)
+
+**Features tested:**
+- ✓ Slider navigates years correctly
+- ✓ Play/pause cycles through years
+- ✓ Back button returns to matrix
+- ✓ Available years listed (skipping gaps)
+
+---
+
+## ✅ Stage 4: Access Protection (Option A)
+- [x] Passphrase gate module (`site/js/gate.js`)
+- [x] **Isolated** from matrix/timelapse logic (swappable for Option B)
+- [x] Session-based (cached in `sessionStorage`)
+- [x] Works on both `index.html` and `timelapse.html`
+- [x] `robots.txt` blocks all search engines
+- [x] `<meta name="robots" content="noindex">` on all views
+- [x] Documentation (`docs/ACCESS-PROTECTION.md`)
+
+**Current passphrase:** `friends2026` (change before production)
+
+**Features tested:**
+- ✓ Gate prompts on initial load
+- ✓ Session persists across navigation
+- ✓ Can clear by closing browser
+
+---
+
+## ✅ Stage 5: GitHub Action
+- [x] Workflow file (`.github/workflows/build-and-deploy.yml`)
+- [x] Triggered on push to `main` branch
+- [x] Installs Node.js 18
+- [x] Runs `npm run build` (generates WebPs + manifest)
+- [x] Deploys `site/` to GitHub Pages
+- [x] Uses built-in `GITHUB_TOKEN` (no manual secrets)
+- [x] Documentation (`docs/GITHUB-ACTION.md`)
+
+**Setup:**
+1. Go to repo **Settings** → **Pages** → set source to **GitHub Actions**
+2. Push to `main` and action runs automatically
+3. Site deployed to `https://<username>.github.io/vieillitude/`
+
+---
+
+## ✅ Stage 6: Git LFS
+- [x] `.gitattributes` configured for LFS tracking
+- [x] All image formats in `photos/` tracked with LFS
+- [x] Generated files in `.gitignore` (build/dist/, site/photos/, site/manifest.json)
+- [x] Documentation (`docs/GIT-LFS.md`)
+
+**Setup (one-time per machine):**
+```bash
+brew install git-lfs        # or apt-get on Linux
+git lfs install
+```
+
+**Workflow:**
+- Add photos to `photos/<slug>/<year>.*`
+- `git add photos/` (LFS tracking automatic)
+- `git commit` and `git push` (LFS files go to GitHub LFS server)
+
+---
+
+## 📁 Final Folder Structure
+
+```
+vieillitude/
+├── README.md                           # Quick start + full guide
+├── package.json                        # Node scripts (build, setup)
+├── .gitignore                          # Excludes build artifacts
+├── .gitattributes                      # LFS config (tracks photos/)
+│
+├── docs/
+│   ├── PROJECT-SPEC.md                # Original specification
+│   ├── ACCESS-PROTECTION.md           # Gate + Option A vs B
+│   ├── GITHUB-ACTION.md               # Deploy workflow
+│   └── GIT-LFS.md                     # LFS setup & usage
+│
+├── .github/
+│   └── workflows/
+│       └── build-and-deploy.yml       # Auto-deploy on push
+│
+├── build/
+│   ├── scripts/
+│   │   ├── build.js                   # Main build script
+│   │   └── setup-test-photos.js       # Test image generator
+│   ├── manifest.json                  # Generated
+│   └── dist/                          # Generated WebPs (not committed)
+│
+├── photos/                            # Source images (LFS tracked)
+│   ├── alice/
+│   ├── bob/
+│   └── charlie/
+│
+└── site/                              # Deployed static site
+    ├── index.html                     # Matrix view
+    ├── timelapse.html                 # Timelapse view
+    ├── manifest.json                  # Generated by build
+    ├── robots.txt                     # SEO blocker
+    ├── photos/                        # Generated WebPs (not committed)
+    ├── css/
+    │   ├── gate.css                   # Passphrase modal
+    │   ├── matrix.css                 # Grid layout
+    │   └── timelapse.css              # Fullscreen viewer
+    └── js/
+        ├── gate.js                    # Auth (isolated, swappable)
+        ├── matrix.js                  # Grid logic
+        └── timelapse.js               # Slider/playback
+```
+
+---
+
+## 🚀 Workflow: Publishing a New Year
+
+**Year 2025 is ready. Here's how to publish:**
+
+```bash
+# 1. Add photos
+mkdir photos/alice
+cp ~/Pictures/alice-2025.jpg photos/alice/2025.jpg
+# ... repeat for all friends and years
+
+# 2. Test locally
+npm run build
+cd site && python3 -m http.server 8000
+# Visit http://localhost:8000 and verify
+# Passphrase: friends2026
+
+# 3. Commit
+git add photos/
+git commit -m "Add 2025 photos"
+
+# 4. Push
+git push origin main
+# ↓ GitHub Action runs automatically
+# ↓ Site rebuilds and deploys to Pages
+# ↓ Live at https://username.github.io/vieillitude/
+```
+
+---
+
+## 🔧 Customization Checklist
+
+Before going live with real photos:
+
+- [ ] Replace test friends (alice, bob, charlie) with real friends
+- [ ] Create friend slugs (lowercase, hyphenated, e.g. `jean-dupont`)
+- [ ] Change passphrase in `site/js/gate.js` (line 7)
+- [ ] Update GitHub Pages settings (custom domain, if applicable)
+- [ ] Update `.github/workflows/build-and-deploy.yml` cname field (if custom domain)
+- [ ] Install Git LFS locally (`brew install git-lfs && git lfs install`)
+- [ ] Replace "[Your Name]" in `README.md`
+- [ ] Update year range in specs (currently 2001–2024)
+- [ ] Review `docs/` files for accuracy
+
+---
+
+## 📚 Documentation Files
+
+For detailed reference:
+
+- **[README.md](../README.md)** — Quick start, full guide, troubleshooting
+- **[PROJECT-SPEC.md](./PROJECT-SPEC.md)** — Original specification
+- **[ACCESS-PROTECTION.md](./ACCESS-PROTECTION.md)** — Gate architecture
+- **[GITHUB-ACTION.md](./GITHUB-ACTION.md)** — Deploy workflow
+- **[GIT-LFS.md](./GIT-LFS.md)** — Image management
+
+---
+
+## ✨ Key Features
+
+✅ **No framework** — vanilla HTML/CSS/JS for speed and simplicity  
+✅ **No server** — static GitHub Pages deployment  
+✅ **No database** — all data in manifest.json (build artifact)  
+✅ **No analytics** — private, friends-only access  
+✅ **Graceful degradation** — missing years handled transparently  
+✅ **Isolated auth** — gate module decoupled from gallery logic  
+✅ **Automatic deployment** — push to main, site rebuilds and deploys  
+✅ **LFS ready** — binary images tracked efficiently  
+
+---
+
+**Implementation complete!** 🎉
+
+All six stages built and tested in browser. Ready for deployment.
+
+**Next steps:**
+1. Install Git LFS locally: `brew install git-lfs && git lfs install`
+2. Replace test friends with real friends
+3. Update passphrase and configuration
+4. Push to GitHub → GitHub Action deploys to Pages
+5. Share passphrase with friends

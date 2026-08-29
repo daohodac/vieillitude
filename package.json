@@ -1,0 +1,23 @@
+{
+    "name": "vieillitude",
+    "version": "1.0.0",
+    "description": "25 years of friend portraits — static site with matrix and timelapse views",
+    "scripts": {
+        "setup": "node build/scripts/setup-test-photos.js",
+        "build": "node build/scripts/build.js",
+        "start": "npm run build && cd site && python3 -m http.server 8000"
+    },
+    "keywords": [
+        "static-site",
+        "portrait",
+        "gallery"
+    ],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "sharp": "^0.33.0"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}

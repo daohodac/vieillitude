@@ -16,3 +16,24 @@ _site/
 # counterproductive to check this file into the repository.
 # Details at https://github.com/github/pages-gem/issues/768
 Gemfile.lock
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Build artifacts (generated, not committed)
+# Source images in photos/ are tracked with Git LFS
+# Generated WebPs and manifest are rebuilt from npm run build
+build/dist/
+site/photos/
+site/manifest.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

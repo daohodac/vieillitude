@@ -1,0 +1,48 @@
+{
+  "friends": [
+    {
+      "slug": "alice",
+      "displayName": "Alice",
+      "years": {
+        "2001": "photos/alice/2001-thumb.webp",
+        "2002": "photos/alice/2002-thumb.webp",
+        "2004": "photos/alice/2004-thumb.webp",
+        "2010": "photos/alice/2010-thumb.webp",
+        "2015": "photos/alice/2015-thumb.webp",
+        "2020": "photos/alice/2020-thumb.webp",
+        "2023": "photos/alice/2023-thumb.webp",
+        "2024": "photos/alice/2024-thumb.webp"
+      }
+    },
+    {
+      "slug": "bob",
+      "displayName": "Bob",
+      "years": {
+        "2002": "photos/bob/2002-thumb.webp",
+        "2004": "photos/bob/2004-thumb.webp",
+        "2005": "photos/bob/2005-thumb.webp",
+        "2015": "photos/bob/2015-thumb.webp",
+        "2020": "photos/bob/2020-thumb.webp",
+        "2024": "photos/bob/2024-thumb.webp"
+      }
+    },
+    {
+      "slug": "charlie",
+      "displayName": "Charlie",
+      "years": {
+        "2001": "photos/charlie/2001-thumb.webp",
+        "2002": "photos/charlie/2002-thumb.webp",
+        "2004": "photos/charlie/2004-thumb.webp",
+        "2005": "photos/charlie/2005-thumb.webp",
+        "2010": "photos/charlie/2010-thumb.webp",
+        "2020": "photos/charlie/2020-thumb.webp",
+        "2023": "photos/charlie/2023-thumb.webp",
+        "2024": "photos/charlie/2024-thumb.webp"
+      }
+    }
+  ],
+  "yearRange": {
+    "min": 2001,
+    "max": 2024
+  }
+}
