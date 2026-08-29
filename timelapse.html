@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Friend Portraits — Timelapse</title>
+    <link rel="stylesheet" href="css/gate.css" />
+    <link rel="stylesheet" href="css/timelapse.css" />
+  </head>
+  <body>
+    <!-- Gate / Passphrase check -->
+    <div id="gate-modal" class="gate-modal">
+      <div class="gate-container">
+        <h1>Friend Portraits</h1>
+        <p>Enter passphrase to continue</p>
+        <input
+          id="gate-passphrase"
+          type="password"
+          placeholder="Passphrase"
+          aria-label="Passphrase"
+        />
+        <button id="gate-submit">Enter</button>
+        <p id="gate-error" class="gate-error"></p>
+      </div>
+    </div>
+
+    <!-- Timelapse view (hidden until gate passes) -->
+    <div
+      id="timelapse-container"
+      class="timelapse-container"
+      style="display: none"
+    >
+      <!-- Header -->
+      <div class="timelapse-header">
+        <button id="back-button" class="back-button">← Back to Matrix</button>
+        <h1 id="friend-name" class="friend-name"></h1>
+        <div class="spacer"></div>
+      </div>
+
+      <!-- Main display -->
+      <div class="timelapse-main">
+        <!-- Photo display -->
+        <div class="photo-display">
+          <img id="photo" class="photo" alt="Friend portrait" src="" />
+          <div id="year-label" class="year-label"></div>
+        </div>
+
+        <!-- Controls -->
+        <div class="timelapse-controls">
+          <button id="play-button" class="play-button">Play</button>
+          <input
+            id="year-slider"
+            type="range"
+            min="0"
+            max="0"
+            value="0"
+            aria-label="Navigate through years"
+            class="year-slider"
+          />
+          <span id="slider-label" class="slider-label"></span>
+        </div>
+
+        <!-- Year navigation info -->
+        <div class="year-info" id="year-info"></div>
+      </div>
+    </div>
+
+    <!-- Loading state -->
+    <div id="loading" class="loading" style="display: none">
+      <p>Loading...</p>
+    </div>
+
+    <!-- Error state -->
+    <div id="error" class="error" style="display: none">
+      <p id="error-text"></p>
+      <a href="index.html" class="error-link">Back to matrix</a>
+    </div>
+
+    <script src="js/gate.js"></script>
+    <script src="js/timelapse.js"></script>
+  </body>
+</html>

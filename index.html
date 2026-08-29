@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Friend Portraits</title>
+    <link rel="stylesheet" href="css/gate.css" />
+    <link rel="stylesheet" href="css/matrix.css" />
+  </head>
+  <body>
+    <!-- Gate / Passphrase check -->
+    <div id="gate-modal" class="gate-modal">
+      <div class="gate-container">
+        <h1>Friend Portraits</h1>
+        <p>Enter passphrase to continue</p>
+        <input
+          id="gate-passphrase"
+          type="password"
+          placeholder="Passphrase"
+          aria-label="Passphrase"
+        />
+        <button id="gate-submit">Enter</button>
+        <p id="gate-error" class="gate-error"></p>
+      </div>
+    </div>
+
+    <!-- Matrix view (hidden until gate passes) -->
+    <div id="matrix-container" class="matrix-container" style="display: none">
+      <!-- Header: filter + info -->
+      <div class="matrix-header">
+        <input
+          id="filter-input"
+          type="text"
+          placeholder="Filter by name..."
+          aria-label="Filter friends by name"
+          class="filter-input"
+        />
+        <div class="year-range-info" id="year-range-info"></div>
+      </div>
+
+      <!-- Scrollable matrix: sticky header (years) + sticky column (names) -->
+      <div class="matrix-scroll-wrapper">
+        <!-- Years header (sticky) -->
+        <div class="years-header" id="years-header">
+          <div class="corner-cell"></div>
+          <!-- Years populated by JS -->
+        </div>
+
+        <!-- Friend rows (scrollable) -->
+        <div class="friends-rows" id="friends-rows">
+          <!-- Rows populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading spinner -->
+    <div id="loading" class="loading" style="display: none">
+      <p>Loading...</p>
+    </div>
+
+    <script src="js/gate.js"></script>
+    <script src="js/matrix.js"></script>
+  </body>
+</html>
