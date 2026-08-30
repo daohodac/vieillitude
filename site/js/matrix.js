@@ -8,11 +8,19 @@ class MatrixView {
         this.manifest = manifest;
         this.filteredFriends = manifest.friends;
         this.filter = '';
+        this.zoom = 100;
+        this.baseWidth = 350;
 
         this.friendsRowsEl = document.getElementById('friends-rows');
         this.yearsHeaderEl = document.getElementById('years-header');
         this.filterInputEl = document.getElementById('filter-input');
         this.yearRangeInfoEl = document.getElementById('year-range-info');
+        this.zoomSliderEl = document.getElementById('zoom-slider');
+        this.zoomLevelEl = document.getElementById('zoom-level');
+        this.zoomInBtn = document.getElementById('zoom-in-btn');
+        this.zoomOutBtn = document.getElementById('zoom-out-btn');
+        this.zoomFitBtn = document.getElementById('zoom-fit-btn');
+        this.scrollWrapperEl = document.querySelector('.matrix-scroll-wrapper');
 
         this.setup();
     }
@@ -30,9 +38,68 @@ class MatrixView {
             this.applyFilter();
         });
 
+        // Setup zoom controls
+        this.zoomSliderEl.addEventListener('input', (e) => {
+            this.zoom = parseInt(e.target.value);
+            this.updateZoom();
+        });
+
+        this.zoomInBtn.addEventListener('click', () => {
+            this.zoom = Math.min(200, this.zoom + 10);
+            this.zoomSliderEl.value = this.zoom;
+            this.updateZoom();
+        });
+
+        this.zoomOutBtn.addEventListener('click', () => {
+            this.zoom = Math.max(50, this.zoom - 10);
+            this.zoomSliderEl.value = this.zoom;
+            this.updateZoom();
+        });
+
+        this.zoomFitBtn.addEventListener('click', () => {
+            this.fitAllYears();
+        });
+
+        // Pinch-to-zoom on touch devices
+        this.scrollWrapperEl.addEventListener('wheel', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                e.preventDefault();
+                const delta = e.deltaY > 0 ? -10 : 10;
+                this.zoom = Math.max(50, Math.min(200, this.zoom + delta));
+                this.zoomSliderEl.value = this.zoom;
+                this.updateZoom();
+            }
+        }, { passive: false });
+
+        // Calculate initial zoom to fit all years
+        setTimeout(() => this.fitAllYears(), 100);
+
         // Display year range
         const { min, max } = this.manifest.yearRange;
         this.yearRangeInfoEl.textContent = `${min} – ${max}`;
+    }
+
+    updateZoom() {
+        const newWidth = (this.baseWidth * this.zoom) / 100;
+        document.documentElement.style.setProperty('--cell-width', `${newWidth}px`);
+        this.zoomLevelEl.textContent = `${this.zoom}%`;
+    }
+
+    fitAllYears() {
+        // Calculate zoom to fit all years on screen
+        if (!this.scrollWrapperEl) return;
+
+        const numYears = this.manifest.yearRange.max - this.manifest.yearRange.min + 1;
+        const headerWidth = 150; // Friend name column width
+        const availableWidth = this.scrollWrapperEl.clientWidth - headerWidth - 20; // 20px for scrollbar
+
+        if (availableWidth <= 0) return;
+
+        const totalWidth = numYears * this.baseWidth;
+        const fitZoom = Math.max(50, Math.min(200, (availableWidth / totalWidth) * 100));
+        this.zoom = Math.round(fitZoom);
+        this.zoomSliderEl.value = this.zoom;
+        this.updateZoom();
     }
 
     renderYearsHeader() {
