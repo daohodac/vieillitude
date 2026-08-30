@@ -39,10 +39,17 @@
         "2023": "photos/charlie/2023-thumb.webp",
         "2024": "photos/charlie/2024-thumb.webp"
       }
+    },
+    {
+      "slug": "dao-hodac",
+      "displayName": "Dao Hodac",
+      "years": {
+        "2026": "photos/dao-hodac/2026-thumb.webp"
+      }
     }
   ],
   "yearRange": {
     "min": 2001,
-    "max": 2024
+    "max": 2026
   }
 }
